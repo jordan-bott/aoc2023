@@ -19,12 +19,10 @@ for x in range(len(input_list)):
 
 for y in range(len(input_list)):
     line = list(input_list[y])
-    print("\nline", line)
     for z in range(len(line)-1):
         part_number_check = False
         part_number = None
         if line[z] in num_list:
-            print("number", line[z])
             if z > 0:
                 # left: line[z-1]
                 if line[z-1] in symbol_list:
@@ -53,8 +51,8 @@ for y in range(len(input_list)):
                         part_number = line[z]
 
             if y < len(input_list) - 1:
-                # bottom: input[y+1]
-                if input_list[y+1] in symbol_list:
+                # bottom: input[y+1][z]
+                if input_list[y+1][z] in symbol_list:
                     part_number_check = True
                     part_number = line[z]
                 if z > 0:
@@ -69,23 +67,19 @@ for y in range(len(input_list)):
                         part_number = line[z]
 
         if part_number_check == True:
-            print("number check", part_number)
-            for num in range(z + 1, len(line)-1):
-                print("______", line[num])
+            for num in range(z + 1, len(line)):
                 if line[num] in num_list:
                     part_number += line[num]
                     line[num] = "."
                 else:
                     break
             for num in range(z-1, -1, -1):
-                print("+++++++++", line[num])
                 if line[num] in num_list:
                     part_number = line[num] + part_number
                     line[num] = "."
                 else:
                     break
         if part_number != None:
-            print("adding!!!!+++++++", part_number)
             result += int(part_number)
 
 print("\n\n\n result:", result)

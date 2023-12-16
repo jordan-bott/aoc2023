@@ -1,4 +1,4 @@
-from day1_input import input
+from day1.input import input
 
 nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 nums_dict = {
